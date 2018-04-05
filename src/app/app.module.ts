@@ -8,15 +8,20 @@ import { ChooseHeroComponent } from './choose-hero/choose-hero.component';
 import { RouterModule, Routes } from '@angular/router';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ApiService } from './api.service';
+import { TestComponent } from './test/test.component';
+
 
 const appRoutes: Routes = [
-  { path: 'choose-hero', component: ChooseHeroComponent }
+  { path: 'choose-hero', component: ChooseHeroComponent },
+  { path: 'test', component: TestComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChooseHeroComponent
+    ChooseHeroComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +31,7 @@ const appRoutes: Routes = [
       { enableTracing: true } // <-- debugging purposes only
     )
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 

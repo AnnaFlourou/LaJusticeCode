@@ -1,1 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+    background-color: royalblue;
+    background: url('http://avante.biz/wp-content/uploads/Superhero-Wallpaper/Superhero-Wallpaper-004.jpg') no-repeat;
+    background-size: cover;
+    
+    
+}

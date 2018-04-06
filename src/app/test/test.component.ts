@@ -13,6 +13,7 @@ export class TestComponent implements OnInit {
   selectIa = null;
   healthPlayer = 500;
   healthIa = 500;
+  historic = [];
   constructor(private apiService: ApiService) { }
   getPerso(param) {
     this.selectPlayer = this.heroes[param];
@@ -56,19 +57,21 @@ export class TestComponent implements OnInit {
     console.log(this.selectIa);
   }
   usePower() {
-    console.log(this.selectPlayer.powerstats.power);
-    console.log(this.selectIa.powerstats.durability);
-    console.log(this.selectIa.powerstats.power);
     const sub = this.selectPlayer.powerstats.power - this.selectIa.powerstats.durability;
     console.log(sub);
     if (sub <= 0) {
-      this.healthIa -= Math.floor(this.selectPlayer.powerstats.power / 2);
+      const damage = Math.floor(this.selectPlayer.powerstats.power / 2);
+      this.healthIa -= damage;
+      // get historic
+      this.historic.push(this.selectPlayer.name + ' caused ' + damage + ' damage');
+      // end get historic
     } else {
+      this.historic.push(this.selectPlayer.name + ' caused ' + sub + ' damage');
       this.healthIa -= sub;
-    }
-    setTimeout(() => { this.turnIa(); }, 2000);
 
-    // setTimeout(this.turnIa, 2000);
+    }
+
+    setTimeout(() => { this.turnIa(); }, 1000);
   }
   useStrength() {
     console.log(this.selectPlayer.powerstats.strength);
@@ -76,39 +79,64 @@ export class TestComponent implements OnInit {
     const sub = this.selectPlayer.powerstats.strength - this.selectIa.powerstats.durability;
     console.log(sub);
     if (sub < 0) {
-      this.healthIa -= Math.floor(this.selectPlayer.powerstats.strength / 2);
+      const damage = Math.floor(this.selectPlayer.powerstats.strength / 2);
+      this.healthIa -= damage;
+      // get historic
+      this.historic.push(this.selectPlayer.name + ' caused ' + damage + ' damage');
+      // end get historic
     } else {
+      this.historic.push(this.selectPlayer.name + ' caused ' + sub + ' damage');
       this.healthIa -= sub;
     }
-    setTimeout(() => { this.turnIa(); }, 2000);
+    setTimeout(() => { this.turnIa(); }, 1000);
   }
   turnIa() {
-    const iaChoice = Math.floor(Math.random() * 10);
-    if (iaChoice < 5) {
-      console.log(this.selectIa.powerstats.power);
-      console.log(this.selectPlayer.powerstats.durability);
-      const sub = this.selectIa.powerstats.power - this.selectPlayer.powerstats.durability;
-      console.log(sub);
-      if (sub < 0) {
-        this.healthPlayer -= Math.floor(this.selectIa.powerstats.power / 2);
-      } else {
-        this.healthPlayer -= sub;
-      }
+    if (this.healthIa <= 0) {
+      this.endGame(this.selectPlayer.name);
     } else {
-      const sub = this.selectIa.powerstats.strength - this.selectPlayer.powerstats.durability;
-      console.log(sub);
-      if (sub < 0) {
-        this.healthPlayer -= Math.floor(this.selectIa.powerstats.strength / 2);
+      const iaChoice = Math.floor(Math.random() * 10);
+      if (iaChoice < 5) {
+        console.log(this.selectIa.powerstats.power);
+        console.log(this.selectPlayer.powerstats.durability);
+        const sub = this.selectIa.powerstats.power - this.selectPlayer.powerstats.durability;
+        console.log(sub);
+        if (sub < 0) {
+          const damage = Math.floor(this.selectIa.powerstats.power / 2);
+          this.healthPlayer -= damage;
+          // get historic
+          this.historic.push(this.selectPlayer.name + ' caused ' + damage + ' damage');
+          // end get historic
+        } else {
+          this.historic.push(this.selectIa.name + ' caused ' + sub + ' damage');
+          this.healthPlayer -= sub;
+        }
       } else {
-        this.healthPlayer -= sub;
+        const sub = this.selectIa.powerstats.strength - this.selectPlayer.powerstats.durability;
+        console.log(sub);
+        if (sub < 0) {
+          const damage = Math.floor(this.selectIa.powerstats.power / 2);
+          this.healthPlayer -= damage;
+          // get historic
+          this.historic.push(this.selectPlayer.name + ' caused ' + damage + ' damage');
+          // end get historic
+        } else {
+          this.historic.push(this.selectIa.name + ' caused ' + sub + ' damage');
+          this.healthPlayer -= sub;
+        }
+      }
+      if (this.healthPlayer <= 0) {
+        this.endGame(this.selectIa.name);
       }
     }
   }
+  endGame(winner) {
+    document.getElementById('hide').style.display = 'inline-block';
+  }
   ngOnInit() {
+    document.getElementById('hide').style.display = 'none';
     this.apiService.getHeroes().subscribe(heroes => {
       // console.log(heroes);
       this.heroes = heroes;
     });
   }
-
 }

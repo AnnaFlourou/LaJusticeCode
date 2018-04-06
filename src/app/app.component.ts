@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   constructor(/*private http: HttpClient*/) {
   }
   ngOnInit(): void {
+    document.getElementById('butOne').style.display = 'block';
     /*this.http.get('https://akabab.github.io/superhero-api/api/id/729.json').subscribe(data => {
       console.log(data);
       this.azerty = data.images.md;

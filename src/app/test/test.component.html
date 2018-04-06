@@ -1,67 +1,76 @@
+<div class='container-fluid'>
+  <div id='hide' class='row hidden'>
+    <p>Game History</p>
+    <p *ngFor='let histo of historic'>{{histo}}</p>
+    <button routerLink="/" routerLinkActive="active">back home</button>
+  </div>
+</div>
 <div *ngIf='selectPlayer; then game else selectMenu'>
 </div>
+
 <div class='container'>
+
   <ng-template #selectMenu>
-    <p>Choose your Hero ...</p>
+    <p class='chooseHero'>Choose your Hero ...</p>
     <div class='row' *ngIf='heroes'>
       <div class=' mx-auto'>
-        <p>{{heroes[560].name}}</p>
-        <img (click)='getPerso(560)' src="{{heroes[560].images.sm}}" />
+        <p class='heroName'>{{heroes[560].name}}</p>
+        <img class='heroImg' (click)='getPerso(560)' src="{{heroes[560].images.sm}}" />
       </div>
       <div class='mx-auto'>
-        <p>{{heroes[550].name}}</p>
-        <img (click)=' getPerso(550) ' src="{{heroes[550].images.sm}}" />
+        <p class='heroName'>{{heroes[550].name}}</p>
+        <img class='heroImg' (click)=' getPerso(550) ' src="{{heroes[550].images.sm}}" />
       </div>
       <div class='mx-auto'>
-        <p>{{heroes[540].name}}</p>
-        <img (click)='getPerso(540)' src="{{heroes[540].images.sm}}" />
+        <p class='heroName'>{{heroes[540].name}}</p>
+        <img class='heroImg' (click)='getPerso(540)' src="{{heroes[540].images.sm}}" />
       </div>
       <div class='mx-auto'>
-        <p>{{heroes[530].name}}</p>
-        <img (click)=' getPerso(530) ' src="{{heroes[530].images.sm}}" />
+        <p class='heroName'>{{heroes[530].name}}</p>
+        <img class='heroImg' (click)=' getPerso(530) ' src="{{heroes[530].images.sm}}" />
       </div>
       <div class='mx-auto'>
-        <p>{{heroes[520].name}}</p>
-        <img (click)='getPerso(520)' src="{{heroes[520].images.sm}}" />
+        <p class='heroName'>{{heroes[520].name}}</p>
+        <img class='heroImg' (click)='getPerso(520)' src="{{heroes[520].images.sm}}" />
       </div>
       <div class='mx-auto'>
-        <p>{{heroes[510].name}}</p>
-        <img (click)=' getPerso(510) ' src="{{heroes[510].images.sm}}" />
+        <p class='heroName'>{{heroes[510].name}}</p>
+        <img class='heroImg' (click)=' getPerso(510) ' src="{{heroes[510].images.sm}}" />
       </div>
       <div class='mx-auto'>
-        <p>{{heroes[500].name}}</p>
-        <img (click)='getPerso(500)' src="{{heroes[500].images.sm}}" />
+        <p class='heroName'>{{heroes[500].name}}</p>
+        <img class='heroImg' (click)='getPerso(500)' src="{{heroes[500].images.sm}}" />
       </div>
       <div class='mx-auto'>
-        <p>{{heroes[490].name}}</p>
-        <img (click)=' getPerso(490) ' src="{{heroes[490].images.sm}}" />
+        <p class='heroName'>{{heroes[490].name}}</p>
+        <img class='heroImg' (click)=' getPerso(490) ' src="{{heroes[490].images.sm}}" />
       </div>
       <div class='mx-auto'>
-        <p>{{heroes[480].name}}</p>
-        <img (click)='getPerso(480)' src="{{heroes[480].images.sm}}" />
+        <p class='heroName'>{{heroes[480].name}}</p>
+        <img class='heroImg' (click)='getPerso(480)' src="{{heroes[480].images.sm}}" />
       </div>
       <div class='mx-auto'>
-        <p>{{heroes[470].name}}</p>
-        <img (click)='getPerso(470) ' src="{{heroes[470].images.sm}}" />
+        <p class='heroName'>{{heroes[470].name}}</p>
+        <img class='heroImg' (click)='getPerso(470) ' src="{{heroes[470].images.sm}}" />
       </div>
     </div>
   </ng-template>
 
   <ng-template #game>
-    <div class='row mx-auto'>
-      <div class='offset-2 col-2'>
-        <p>You</p>
-        <img src='{{selectPlayer.images.sm}} ' />
-        <p>vie : {{healthPlayer}}/100</p>
-        <button (click)='usePower()'>Power</button>
-        <button (click)='useStrength()'>Attack</button>
+    <div class='row'>
+      <div class='mx-auto'>
+        <p class='heroName'>{{selectPlayer.name}}</p>
+        <img class='heroImg' src='{{selectPlayer.images.md}} ' />
+        <p class='heroLife'>vie : {{healthPlayer}}</p>
+        <button class='btnFight' (click)='usePower()'>Power</button>
+        <button class='btnFight' (click)='useStrength()'>Attack</button>
 
       </div>
 
-      <div class='offset-2 col-2'>
-        <p>Your enemy</p>
-        <img src='{{selectIa.images.sm}} ' />
-        <p>vie :{{healthIa}} /100</p>
+      <div class='mx-auto'>
+        <p class='heroName'>{{selectIa.name}}</p>
+        <img class='heroImg' src='{{selectIa.images.md}} ' />
+        <p class='heroLife'>vie :{{healthIa}}</p>
       </div>
     </div>
   </ng-template>

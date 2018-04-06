@@ -3,7 +3,7 @@
 <div class='container'>
   <ng-template #selectMenu>
     <p>Choose your Hero ...</p>
-    <div class='row'>
+    <div class='row' *ngIf='heroes'>
       <div class=' mx-auto'>
         <p>{{heroes[560].name}}</p>
         <img (click)='getPerso(560)' src="{{heroes[560].images.sm}}" />
@@ -42,13 +42,27 @@
       </div>
       <div class='mx-auto'>
         <p>{{heroes[470].name}}</p>
-        <img (click)=' getPerso(470) ' src="{{heroes[470].images.sm}}" />
+        <img (click)='getPerso(470) ' src="{{heroes[470].images.sm}}" />
       </div>
     </div>
   </ng-template>
 
   <ng-template #game>
-    <img src='{{selectPlayer.images.sm}} ' />
-    <img src='{{selectIa.images.sm}} ' />
+    <div class='row mx-auto'>
+      <div class='offset-2 col-2'>
+        <p>You</p>
+        <img src='{{selectPlayer.images.sm}} ' />
+        <p>vie : {{healthPlayer}}/100</p>
+        <button (click)='usePower()'>Power</button>
+        <button (click)='useStrength()'>Attack</button>
+
+      </div>
+
+      <div class='offset-2 col-2'>
+        <p>Your enemy</p>
+        <img src='{{selectIa.images.sm}} ' />
+        <p>vie :{{healthIa}} /100</p>
+      </div>
+    </div>
   </ng-template>
 </div>

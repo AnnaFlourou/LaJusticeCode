@@ -1,5 +1,6 @@
 <div class='container-fluid'>
   <div id='hide' class='row hidden'>
+
     <p>Game History</p>
     <p *ngFor='let histo of historic'>{{histo}}</p>
     <button routerLink="/" routerLinkActive="active">back home</button>
@@ -61,7 +62,7 @@
       <div class='mx-auto'>
         <p class='heroName'>{{selectPlayer.name}}</p>
         <img class='heroImg' src='{{selectPlayer.images.md}} ' />
-        <p class='heroLife'>vie : {{healthPlayer}}</p>
+        <p class='heroLife'>health : {{healthPlayer}}</p>
         <button class='btnFight' (click)='usePower()'>Power</button>
         <button class='btnFight' (click)='useStrength()'>Attack</button>
 
@@ -70,7 +71,7 @@
       <div class='mx-auto'>
         <p class='heroName'>{{selectIa.name}}</p>
         <img class='heroImg' src='{{selectIa.images.md}} ' />
-        <p class='heroLife'>vie :{{healthIa}}</p>
+        <p class='heroLife'>health :{{healthIa}}</p>
       </div>
     </div>
   </ng-template>

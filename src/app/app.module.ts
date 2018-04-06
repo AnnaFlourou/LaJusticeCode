@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { ChooseHeroComponent } from './choose-hero/choose-hero.component';
+
 
 import { RouterModule, Routes } from '@angular/router';
 
@@ -13,14 +13,12 @@ import { TestComponent } from './test/test.component';
 
 
 const appRoutes: Routes = [
-  { path: 'choose-hero', component: ChooseHeroComponent },
   { path: 'test', component: TestComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChooseHeroComponent,
     TestComponent
   ],
   imports: [

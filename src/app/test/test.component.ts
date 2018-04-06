@@ -131,6 +131,7 @@ export class TestComponent implements OnInit {
   }
   endGame(winner) {
     document.getElementById('hide').style.display = 'inline-block';
+    alert(winner + ' is the winner !');
   }
   ngOnInit() {
     document.getElementById('hide').style.display = 'none';

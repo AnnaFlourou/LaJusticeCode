@@ -1,15 +1,15 @@
-<div class='container-fluid'>
+<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+<div class='container'>
   <div id='hide' class='row hidden'>
 
     <p>Game History</p>
     <p *ngFor='let histo of historic'>{{histo}}</p>
     <button routerLink="/" routerLinkActive="active">back home</button>
   </div>
-</div>
-<div *ngIf='selectPlayer; then game else selectMenu'>
-</div>
 
-<div class='container'>
+  <div *ngIf='selectPlayer; then game else selectMenu'>
+  </div>
+
 
   <ng-template #selectMenu>
     <p class='chooseHero'>Choose your Hero ...</p>
@@ -34,6 +34,8 @@
         <p class='heroName'>{{heroes[520].name}}</p>
         <img class='heroImg' (click)='getPerso(520)' src="{{heroes[520].images.sm}}" />
       </div>
+    </div>
+    <div class="row">
       <div class='mx-auto'>
         <p class='heroName'>{{heroes[510].name}}</p>
         <img class='heroImg' (click)=' getPerso(510) ' src="{{heroes[510].images.sm}}" />
@@ -65,6 +67,7 @@
         <p class='heroLife'>health : {{healthPlayer}}</p>
         <button class='btnFight' (click)='usePower()'>Power</button>
         <button class='btnFight' (click)='useStrength()'>Attack</button>
+        <button class='btnFight' (click)='useMagic()'>Magic</button>
 
       </div>
 

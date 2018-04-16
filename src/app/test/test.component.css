@@ -1,3 +1,6 @@
+.container{
+    overflow:  hidden !important;
+}
 .hidden{
     position: absolute;
     border: 1px solid black;
@@ -17,22 +20,42 @@
 }
 
 .chooseHero {
+    font-family: 'Permanent Marker', cursive;
+    margin-top: 15px;
     font-weight: bold;
     font-size: 2em;
     text-align: center;
+    color: #f3ea03;
+    text-shadow: 0px 2px black, 2px 0px black, 0px -2px black, -2px 0px black;
+    -webkit-animation:vibrate-1 .3s linear infinite both;
+    animation:vibrate-1 .3s linear infinite both;
+    
 }
+
+@-webkit-keyframes vibrate-1{0%{-webkit-transform:translate(0);transform:translate(0)}20%{-webkit-transform:translate(-2px,2px);transform:translate(-2px,2px)}40%{-webkit-transform:translate(-2px,-2px);transform:translate(-2px,-2px)}60%{-webkit-transform:translate(2px,2px);transform:translate(2px,2px)}80%{-webkit-transform:translate(2px,-2px);transform:translate(2px,-2px)}100%{-webkit-transform:translate(0);transform:translate(0)}}@keyframes vibrate-1{0%{-webkit-transform:translate(0);transform:translate(0)}20%{-webkit-transform:translate(-2px,2px);transform:translate(-2px,2px)}40%{-webkit-transform:translate(-2px,-2px);transform:translate(-2px,-2px)}60%{-webkit-transform:translate(2px,2px);transform:translate(2px,2px)}80%{-webkit-transform:translate(2px,-2px);transform:translate(2px,-2px)}100%{-webkit-transform:translate(0);transform:translate(0)}}
+
 .btnFight {
     margin: auto;
-    font-size: 2em;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.8em;
     padding: 0.5em;
     border-radius: 100px;
     border: none;
-    box-shadow: 0px 0px 50px black;
+    color: royalblue;
+    text-shadow: 0px 2px black, 2px 0px black, 0px -2px black, -2px 0px black;
+}
+.btnFight:hover{
+    background: none;
 }
 
 .heroName {
-    font-size: 2em;
+    font-size: 1.7em;
     text-align: center;
+    margin-top: 10px;
+    font-family: 'Permanent Marker', cursive;
+    color: white;
+    text-shadow: 0px 2px black, 2px 0px black, 0px -2px black, -2px 0px black;
+    
 }
 
 .heroImg {

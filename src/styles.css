@@ -1,6 +1,9 @@
 body{
     background-color: royalblue;
-    background: url('http://avante.biz/wp-content/uploads/Superhero-Wallpaper/Superhero-Wallpaper-004.jpg') no-repeat;
+    background: url('http://avante.biz/wp-content/uploads/Superhero-Wallpaper/Superhero-Wallpaper-004.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
     
     

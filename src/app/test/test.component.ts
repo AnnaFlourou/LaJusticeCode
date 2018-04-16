@@ -90,12 +90,27 @@ export class TestComponent implements OnInit {
     }
     setTimeout(() => { this.turnIa(); }, 1000);
   }
+  useMagic() {
+    const sub = 70 - this.selectIa.powerstats.durability;
+    console.log(sub);
+    if (sub < 0) {
+      const damage = Math.floor(70 / 2);
+      this.healthIa -= damage;
+      // get historic
+      this.historic.push(this.selectPlayer.name + ' caused ' + damage + ' damage');
+      // end get historic
+    } else {
+      this.historic.push(this.selectPlayer.name + ' caused ' + sub + ' damage');
+      this.healthIa -= sub;
+    }
+    setTimeout(() => { this.turnIa(); }, 1000);
+  }
   turnIa() {
     if (this.healthIa <= 0) {
-      this.endGame(this.selectPlayer.name);
+      this.endGame('You win');
     } else {
       const iaChoice = Math.floor(Math.random() * 10);
-      if (iaChoice < 5) {
+      if (iaChoice < 3) {
         console.log(this.selectIa.powerstats.power);
         console.log(this.selectPlayer.powerstats.durability);
         const sub = this.selectIa.powerstats.power - this.selectPlayer.powerstats.durability;
@@ -110,7 +125,7 @@ export class TestComponent implements OnInit {
           this.historic.push(this.selectIa.name + ' caused ' + sub + ' damage');
           this.healthPlayer -= sub;
         }
-      } else {
+      } else if (iaChoice < 6) {
         const sub = this.selectIa.powerstats.strength - this.selectPlayer.powerstats.durability;
         console.log(sub);
         if (sub < 0) {
@@ -123,9 +138,23 @@ export class TestComponent implements OnInit {
           this.historic.push(this.selectIa.name + ' caused ' + sub + ' damage');
           this.healthPlayer -= sub;
         }
+      } else {
+        console.log('coucou');
+        const sub = 70 - this.selectPlayer.powerstats.durability;
+        console.log(sub);
+        if (sub < 0) {
+          const damage = Math.floor(70 / 2);
+          this.healthPlayer -= damage;
+          // get historic
+          this.historic.push(this.selectPlayer.name + ' caused ' + damage + ' damage');
+          // end get historic
+        } else {
+          this.historic.push(this.selectIa.name + ' caused ' + sub + ' damage');
+          this.healthPlayer -= sub;
+        }
       }
       if (this.healthPlayer <= 0) {
-        this.endGame(this.selectIa.name);
+        this.endGame('You loose');
       }
     }
   }

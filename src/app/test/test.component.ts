@@ -139,7 +139,6 @@ export class TestComponent implements OnInit {
           this.healthPlayer -= sub;
         }
       } else {
-        console.log('coucou');
         const sub = 70 - this.selectPlayer.powerstats.durability;
         console.log(sub);
         if (sub < 0) {
@@ -160,7 +159,7 @@ export class TestComponent implements OnInit {
   }
   endGame(winner) {
     document.getElementById('hide').style.display = 'inline-block';
-    alert(winner + ' is the winner !');
+    alert(winner);
   }
   ngOnInit() {
     document.getElementById('hide').style.display = 'none';

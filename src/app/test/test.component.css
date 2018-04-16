@@ -68,3 +68,10 @@
     color: brown;
     text-shadow: 0px 0px 3px black;
 }
+
+.history{
+    margin: 0 !important;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.6rem;
+    
+}
